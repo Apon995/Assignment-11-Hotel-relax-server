@@ -10,7 +10,7 @@ function App() {
     <header>
       <Navbar/>
     </header>
-    <main>
+    <main className='min-h-screen'>
       <Outlet/>
     </main>
     

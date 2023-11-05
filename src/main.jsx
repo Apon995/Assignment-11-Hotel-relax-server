@@ -8,6 +8,8 @@ import Rooms from './Components/Rooms.jsx';
 import Mybookings from './Components/Mybookings.jsx';
 import About from './Components/About.jsx';
 import Contact from './Components/Contact.jsx';
+import Login from './Components/Login.jsx';
+import Register from './Components/Register.jsx';
 
 
 
@@ -36,6 +38,14 @@ const router = createBrowserRouter([
       {
         path : '/Contact',
         element : <Contact/>
+      },
+      {
+        path : '/Login',
+        element  : <Login/>
+      },
+      {
+        path : '/Register',
+        element : <Register/>
       }
     ]
   }
