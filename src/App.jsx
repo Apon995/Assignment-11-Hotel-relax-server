@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <header>
-        <div className={`bg-${location.pathname == '/' ? '[url(./assets/Slider-images/slider-1.jpg)]' : 'inherit'} bg-no-repeat bg-cover bg-center w-full h-${location.pathname == '/' ? '[100vh]' : 'fit'}`}>
+        <div className={`${location.pathname == '/' ? 'header-image':'banner'}`}>
           <Banner />
         </div>
         <Navbar />

@@ -35,8 +35,8 @@ function Navbar() {
 
   return (
     <>
-      <nav style={{ backgroundColor: Navbar ? 'white' : 'inherit' , transition : 'background 0.4s' }}
-        className={`fixed w-full top-0 left-0 z-10 flex items-center justify-between px-[5%] shadow-${Navbar ? 'md' : 'none'}`}
+      <nav style={{ backgroundColor: Navbar ? 'white' : 'inherit' , transition : 'background 0.2s' }}
+        className={`fixed w-full top-0 left-0 z-50 flex items-center justify-between px-[5%] shadow-${Navbar ? 'md' : 'none'}`}
         id="Navbar"
       >
         <div className="flex items-center gap-10 ">
@@ -68,7 +68,7 @@ function Navbar() {
             </ul>
           </div>
         </div>
-
+        
         <div>
           <button className={`bg-[#000000] text-[#FFFF] py-4 px-10 font-normal text-[18px] hover:bg-inherit active:bg-[#ff0000] active:text-[#FFFF] active:border-none hover:border-[2px] border-[#000000] hover:text-${!Navbar ? 'white' : 'black'} hover:font-medium transition-all`}>
             Login
@@ -80,6 +80,7 @@ function Navbar() {
         </div>
 
       </nav>
+      
 
     </>
   );
