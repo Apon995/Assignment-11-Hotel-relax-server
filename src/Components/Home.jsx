@@ -117,6 +117,9 @@ function Home() {
         </div>
 
         <br />
+        <br />
+        <br />
+        <br />
 
         {/* -------User Testimonials section--- */}
         <div>
@@ -192,8 +195,92 @@ function Home() {
 
         </div>
 
+        
+
+
+        {/* ---google-map/locaiton-section */}
+        <div className="flex gap-2 w-full  mt-32">
+          <div className="w-[40%] text-center flex items-center justify-center ">
+
+            <div className="py-8 flex gap-3 flex-col">
+              <h1 className="uppercase text-6xl text-black">Hotel Relax</h1>
+              <br />
+              <div className="flex items-center gap-3">
+                <i className="fa-regular fa-calendar-days text-2xl"></i>
+
+                <div>
+                  <h1 className="text-xl text-black font-medium">Saturday to friday
+                  </h1>
+                  <p className="text-start text-base text-[#333333] font-normal"> 24/7 open</p>
+                </div>
+
+              </div>
+
+
+              <div className="flex items-center gap-3">
+                <i className="fa-solid fa-location-dot text-2xl"></i>
+
+                <div>
+                  <h1 className="text-xl text-black font-medium">Auckland city in new zealand
+                  </h1>
+                  <p className="text-start text-base text-[#333333] font-normal ">Hotel locaiton</p>
+                </div>
+
+              </div>
+
+              <div className="flex items-center gap-3">
+                <i className="fa-solid fa-phone text-2xl"></i>
+
+                <div>
+                  <h1 className="text-xl text-black font-medium">+9990003</h1>
+                  <h2 className="text-start text-base text-[#333333] font-normal">phone</h2>
+
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <i className="fa-solid fa-envelope text-2xl"></i>
+
+                <div>
+                  <h1 className="text-xl text-black font-medium">Hotel_realx2023@gmail.com
+                  </h1>
+                  <p className="text-start text-base text-[#333333] font-normal">email</p>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+          <div className="w-[60%]  bg-[#F0F0F0] p-9">
+            <div className="border-[10px] border-[#FFFF]">
+              <iframe width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=500&amp;hl=en&amp;q=Auckland+(Hotel%20relax)&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/population/">Population mapping</a></iframe>
+            </div>
+          </div>
+
+        </div>
         <br />
         <br />
+        <br />
+        <br />
+        {/* Newsletter Signup-section */}
+
+        <div className='w-full md:h-[200px] md:py-0 py-7 bg-black text-white px-[5%] flex md:flex-row flex-col items-center justify-center md:justify-between md:gap-0 gap-5'>
+
+
+          <div className='md:text-4xl text-2xl inline-flex items-center gap-4'>
+
+            <i className="fa-solid fa-dove md:block hidden"></i>
+
+            <h1 className='text-center'> Newsletter Signup</h1>
+
+          </div>
+
+
+          <div className='flex border-[1px] md:h-[65px] h-[60px] md:w-[35rem] w-full rounded-md '>
+            <input type="text" name="search" id="search" placeholder='Enter your email address' className='md:w-[80%] w-[70%] px-2 rounded-l-sm outline-none border-none md:text-base text-sm font-normal' />
+            <button className='md:w-[20%] w-[30%] bg-[#fafafa] rounded-r-sm text-base text-black hover:bg-inherit  font-noraml duration-700 hover:text-white active:bg-[#ff0000]'>Submit</button>
+          </div>
+         <hr />
+        </div>
 
       </section>
     </>
