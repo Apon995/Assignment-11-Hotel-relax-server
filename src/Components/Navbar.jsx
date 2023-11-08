@@ -17,7 +17,7 @@ function Navbar() {
 
 
   useEffect(() => {
-    if (location.pathname == '/') {
+    if (location.pathname == '/' || location.pathname == '/About' || location.pathname == '/Contact') {
 
       window.addEventListener("scroll", handleChangeNav);
     }
@@ -27,10 +27,10 @@ function Navbar() {
   }, [location.pathname, handleChangeNav])
 
   useEffect(() => {
-    if (location.pathname == '/') {
+    if (location.pathname == '/' || location.pathname == '/About' || location.pathname == '/Contact') {
       setNavbar(false)
     }
-  }, [location.pathname == '/'])
+  }, [location.pathname])
 
 
   return (

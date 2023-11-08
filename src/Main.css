@@ -51,11 +51,30 @@ body {
 }
 
 /* --home-page-banner-image-setup */
-.header-image {
+.homepage {
   background-image: url(./assets/Slider-images/slider-1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   width: 100%;
   height: 100vh;
+}
+
+.Aboutpage {
+  background-image: url(./assets/Slider-images/ourHistory.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+
+}
+.Contactpage {
+  background-image: url(./assets/Slider-images/grand-region.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+
 }
