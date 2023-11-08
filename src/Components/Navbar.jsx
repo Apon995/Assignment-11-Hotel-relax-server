@@ -49,12 +49,20 @@ function Navbar() {
           </div>
 
           <div>
-            <ul className={`flex items-center gap-4 text-${Navbar ? '[#000000]' : '[#FFFF]'} font-medium text-[17px] hover-effect`}>
+            <ul id="navlink" className={`flex relative items-center gap-4 text-${Navbar ? '[#000000]' : '[#FFFF]'} font-medium text-[17px] hover-effect`}>
               <li>
                 <NavLink to="/">Home</NavLink>
               </li>
-              <li>
-                <NavLink to="/Room">Rooms</NavLink>
+              <li >
+                <NavLink to="/Room">Rooms </NavLink>
+
+                <ul className={`absolute dropdown bg-black  text-[#FFFF] top-[34px] left-[60px] w-[200px] rounded-sm px-2 py-5 space-y-2 hidden `}>
+                  <li><NavLink to={`/Details/${"Superior Room"}`}>Superior Rooms</NavLink></li>
+                  <li><NavLink to={`/Details/${"Deluxe Room"}`}>Deluxe Rooms</NavLink></li>
+                  <li><NavLink to={`/Details/${"Signature Room"}`} >Luxury Rooms</NavLink></li>
+                  <li><NavLink to={`/Details/${"Luxury Suites Room"}`} >Signature Rooms</NavLink></li>
+                </ul>
+
               </li>
               <li>
                 <NavLink to="/Mybooking">My booking</NavLink>

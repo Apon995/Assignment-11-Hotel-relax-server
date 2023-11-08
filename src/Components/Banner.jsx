@@ -128,10 +128,18 @@ function Banner() {
             <div id='banner' className='BannerBackground'>
                 <div className={`flex text-start items-center flex-col justify-center w-fit h-full text-[#FFFF] px-[5%]`}>
                     <span className={`${location.pathname == '/' ? 'block' : 'hidden'} text-start w-full text-base font-normal uppercase`}>Live The exprience</span>
+                    <span className={`${location.pathname == '/Room' ? 'block' : 'hidden'} text-start w-full text-base font-normal uppercase`}>
+                        EXCLUSIVE ENVIRONMENT</span>
 
                     <h1 className={`${location.pathname == '/' ? 'block' : 'hidden'} text-8xl leading-tight uppercase font-bold`}>Make <br />
                         yourself <br />
                         At the Home</h1>
+
+                    <h1 className={`${location.pathname == '/Room' ? 'block' : 'hidden'} text-8xl leading-tight uppercase font-bold`}>
+                        Discover<br />
+                        our rooms <br />
+                        and suites
+                    </h1>
 
                     <h1 className={`${location.pathname == '/About' ? 'block' : 'hidden'} text-8xl font-bold text-white`}>
                         About <br /> our self

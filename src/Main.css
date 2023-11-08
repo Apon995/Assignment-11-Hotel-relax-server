@@ -28,6 +28,15 @@ body {
   border-bottom: 3px solid #ff0000;
 }
 
+#navlink li:focus-within ul,
+#navlink li:hover ul {
+  display: initial
+}
+
+.dropdown > li > a:hover {
+  border-bottom: 1px solid white;
+}
+
 /* --footer-section-socialicons-hover-effect-design */
 #socialIcons > div {
   border: 1px solid white;
@@ -64,7 +73,7 @@ body {
 }
 
 .room {
-  background-image: url(./assets/client-image/client-1.jpg);
+  background-image: url(https://i.ibb.co/c17nL6R/superior-4.jpg);
 }
 
 .mybooking {
@@ -79,19 +88,18 @@ body {
   background-image: url(./assets/Slider-images/grand-region.jpg);
 }
 
-
-.deluxe{
+.deluxe {
   background-image: url(https://i.ibb.co/C09dPJ5/deluxe-1.jpg);
 }
 
-.luxary{
+.luxary {
   background-image: url(https://i.ibb.co/Z27553x/luxary-1.jpg);
 }
 
-.superior{
+.superior {
   background-image: url(https://i.ibb.co/RHp8YYj/superior-2.jpg);
 }
 
-.signature{
+.signature {
   background-image: url(https://i.ibb.co/JrHXVTw/signature-1.jpg);
 }
