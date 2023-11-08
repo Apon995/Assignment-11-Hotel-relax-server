@@ -10,7 +10,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules'
 import 'swiper/css';
 import 'swiper/css/pagination';
-import slider1 from '../assets/Slider-images/slider-1.jpg'
 import { Link } from "react-router-dom";
 
 function Home() {
@@ -27,7 +26,6 @@ function Home() {
 
   }, [])
 
-  console.log(Alldata)
   return (
     <>
       <section>
@@ -146,7 +144,7 @@ function Home() {
             >
               {
                 Alldata?.map(room =>
-                  <SwiperSlide>
+                  <SwiperSlide key={room._id}>
                     <Link to={`/Details/${room?.Room_category}`}>
                       <div>
                         <img src={room?.Room_images[0]} alt="" className="w-full h-[470px] rounded-sm" />

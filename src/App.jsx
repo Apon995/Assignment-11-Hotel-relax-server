@@ -8,41 +8,10 @@ import Banner from './Components/Banner.jsx';
 function App() {
   const location = useLocation();
 
+
+
   useEffect(() => {
-    if (location.pathname == '/') {
-      document.getElementById('banner').classList.remove('Aboutpage');
-      document.getElementById('banner').classList.remove('Contactpage');
-      document.getElementById('banner').classList.add('homepage');
-    }
-    else if (location.pathname == '/Room') {
-      document.getElementById('banner').classList.remove('homepage');
-      document.getElementById('banner').classList.remove('Aboutpage');
-      document.getElementById('banner').classList.remove('Contactpage');
-    }
-    else if(location.pathname == '/Mybooking'){
-      document.getElementById('banner').classList.remove('homepage');
-      document.getElementById('banner').classList.remove('Aboutpage');
-      document.getElementById('banner').classList.remove('Contactpage');
-    }
-    else if(location.pathname == '/About'){
-      document.getElementById('banner').classList.remove('Contactpage');
-      document.getElementById('banner').classList.remove('homepage');
-      document.getElementById('banner').classList.add('Aboutpage');
-
-    }
-    else if(location.pathname == '/Contact'){
-      document.getElementById('banner').classList.remove('homepage');
-      document.getElementById('banner').classList.remove('Aboutpage');
-      document.getElementById('banner').classList.add('Contactpage');
-      
-    }
-
-
-
-
-
-
-
+    
   }, [location.pathname])
 
   return (

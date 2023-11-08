@@ -1,5 +1,5 @@
 import React from 'react';
-import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import Notfound from './Components/Notfound.jsx';
@@ -10,42 +10,48 @@ import About from './Components/About.jsx';
 import Contact from './Components/Contact.jsx';
 import Login from './Components/Login.jsx';
 import Register from './Components/Register.jsx';
+import Detailspage from './Components/Detailspage.jsx';
 
 
 
 const router = createBrowserRouter([
   {
-    path : '/',
-    element : <App/>,
-    errorElement : <Notfound/>,
-    children : [
+    path: '/',
+    element: <App />,
+    errorElement: <Notfound />,
+    children: [
       {
-        path : '/',
-        element : <Home/>
+        path: '/',
+        element: <Home />
       },
       {
-        path : '/Room',
-        element : <Rooms/>
+        path: '/Room',
+        element: <Rooms />
       },
       {
-        path : '/Mybooking',
-        element : <Mybookings/>
+        path: '/Mybooking',
+        element: <Mybookings />
       },
       {
-        path : '/About',
-        element : <About/>
+        path: '/About',
+        element: <About />
       },
       {
-        path : '/Contact',
-        element : <Contact/>
+        path: '/Contact',
+        element: <Contact />
       },
       {
-        path : '/Login',
-        element  : <Login/>
+        path: '/Login',
+        element: <Login />
       },
       {
-        path : '/Register',
-        element : <Register/>
+        path: '/Register',
+        element: <Register />
+      },
+      {
+        path: '/Details/:name',
+        element: <Detailspage />,
+        
       }
     ]
   }
@@ -54,6 +60,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )
