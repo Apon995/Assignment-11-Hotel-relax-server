@@ -40,6 +40,7 @@ function Banner() {
             document.getElementById('banner').classList.remove('room')
             document.getElementById('banner').classList.remove('mybooking')
             document.getElementById('banner').classList.remove('about')
+            document.getElementById('banner').classList.remove('contact')
             document.getElementById('banner').classList.add('mybooking')
 
         }
@@ -139,6 +140,10 @@ function Banner() {
                         Discover<br />
                         our rooms <br />
                         and suites
+                    </h1>
+                    <h1 className={`${location.pathname == '/Mybooking' ? 'block' : 'hidden'} text-8xl  leading-tight uppercase font-extrabold`}>
+                        MY booking <br />
+                        Rooms and <br /> suites
                     </h1>
 
                     <h1 className={`${location.pathname == '/About' ? 'block' : 'hidden'} text-8xl font-bold text-white`}>

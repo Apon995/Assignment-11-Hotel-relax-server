@@ -12,7 +12,7 @@ function Navbar() {
   }, [location.pathname])
 
   const handleChangeNav = () => {
-    if (window.scrollY > 120) {
+    if (window.scrollY > 90) {
       setNavbar(true);
     } else {
       setNavbar(false);
