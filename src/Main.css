@@ -51,8 +51,7 @@ body {
 }
 
 /* --home-page-banner-image-setup */
-.homepage {
-  background-image: url(./assets/Slider-images/slider-1.jpg);
+.BannerBackground {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -60,30 +59,39 @@ body {
   height: 100vh;
 }
 
-.Aboutpage {
+.home {
+  background-image: url(./assets/Slider-images/Home.jpg);
+}
+
+.room {
+  background-image: url(./assets/client-image/client-1.jpg);
+}
+
+.mybooking {
+  background-image: url(./assets/Slider-images/grand-region.jpg);
+}
+
+.about {
   background-image: url(./assets/Slider-images/ourHistory.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100vh;
-
 }
-.Contactpage {
-  background-image: url(./assets/Slider-images/grand-region.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100vh;
 
+.contact {
+  background-image: url(./assets/Slider-images/grand-region.jpg);
 }
-.Details{
-  background-image: url(./assets/Slider-images/grand-region.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100vh;
 
+
+.deluxe{
+  background-image: url(https://i.ibb.co/C09dPJ5/deluxe-1.jpg);
+}
+
+.luxary{
+  background-image: url(https://i.ibb.co/Z27553x/luxary-1.jpg);
+}
+
+.superior{
+  background-image: url(https://i.ibb.co/RHp8YYj/superior-2.jpg);
+}
+
+.signature{
+  background-image: url(https://i.ibb.co/JrHXVTw/signature-1.jpg);
 }
