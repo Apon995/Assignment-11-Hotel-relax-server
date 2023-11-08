@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import History from "../assets/Slider-images/ourHistory.jpg";
 import grand from "../assets/Slider-images/grand-region.jpg";
 import client1 from '../assets/client-image/client-1.jpg';
 import client2 from '../assets/client-image/client-2.jpg';
 import client3 from '../assets/client-image/client-3.jpg';
 import client4 from '../assets/client-image/client-4.jpg';
+import useFetch from "../Customhooks/useFetch";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules'
+import 'swiper/css';
+import 'swiper/css/pagination';
+import slider1 from '../assets/Slider-images/slider-1.jpg'
+import { Link } from "react-router-dom";
 
 function Home() {
+
+  const [Alldata, setAlldata] = useState([]);
+
+  const axiosFetch = useFetch();
+
+  useEffect(() => {
+
+    axiosFetch.get('/AllData')
+      .then(res => setAlldata(res?.data))
+      .catch(error => console.log(error))
+
+  }, [])
+
+  console.log(Alldata)
   return (
     <>
       <section>
@@ -58,7 +79,7 @@ function Home() {
         {/*---------- the grand-regions-section--------- */}
         <div className="bg-[#000000] w-full flex pb-28 gap-4 items-center ">
           <div className="w-[50%]">
-            <h1 className="text-6xl font-bold text-white py-6 ml-9">
+            <h1 className="text-6xl font-bold text-white py-[80px] ml-9">
               THE GRAND <br />
               REGIONS
             </h1>
@@ -111,8 +132,45 @@ function Home() {
             </button>
           </div>
           <br />
-          <div>
-            divvvvvvvvvvvvvvvvvvaaaaaaaaaaaaaaa
+          <div className="px-[1%] pb-40">
+            <Swiper
+              slidesPerView={2}
+              spaceBetween={35}
+              pagination={{
+                clickable: false,
+                type: 'none'
+              }}
+
+              modules={[Pagination]}
+              className="mySwiper"
+            >
+              {
+                Alldata?.map(room =>
+                  <SwiperSlide>
+                    <Link to={`/Details/${room?.Room_category}`}>
+                      <div>
+                        <img src={room?.Room_images[0]} alt="" className="w-full h-[470px] rounded-sm" />
+
+                        <div className="flex justify-between mt-4">
+                          <div>
+                            <h1 className="text-black text-4xl font-bold">{room?.Room_category}</h1>
+                            <p className="text-[#54595F] text-xl font-normal">{room?.Room_size}</p>
+                          </div>
+                          <div>
+                            <h1 className="text-[#54595F] text-xl text-end">From </h1>
+                            <p className="text-black text-4xl font-bold">${room?.Room_price_per_night}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </SwiperSlide>
+
+
+                )
+              }
+
+
+            </Swiper>
           </div>
         </div>
 
@@ -195,7 +253,7 @@ function Home() {
 
         </div>
 
-        
+
 
 
         {/* ---google-map/locaiton-section */}
@@ -203,7 +261,7 @@ function Home() {
           <div className="w-[40%] text-center flex items-center justify-center ">
 
             <div className="py-8 flex gap-3 flex-col">
-              <h1 className="uppercase text-6xl text-black">Hotel Relax</h1>
+              <h1 className="uppercase text-6xl text-black font-bold">Hotel Relax</h1>
               <br />
               <div className="flex items-center gap-3">
                 <i className="fa-regular fa-calendar-days text-2xl"></i>
@@ -252,7 +310,7 @@ function Home() {
           </div>
           <div className="w-[60%]  bg-[#F0F0F0] p-9">
             <div className="border-[10px] border-[#FFFF]">
-              <iframe width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=500&amp;hl=en&amp;q=Auckland+(Hotel%20relax)&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/population/">Population mapping</a></iframe>
+              <iframe width="100%" height="500" src="https://maps.google.com/maps?width=100%25&amp;height=500&amp;hl=en&amp;q=Auckland+(Hotel%20relax)&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/population/">Population mapping</a></iframe>
             </div>
           </div>
 
@@ -279,7 +337,7 @@ function Home() {
             <input type="text" name="search" id="search" placeholder='Enter your email address' className='md:w-[80%] w-[70%] px-2 rounded-l-sm outline-none border-none md:text-base text-sm font-normal' />
             <button className='md:w-[20%] w-[30%] bg-[#fafafa] rounded-r-sm text-base text-black hover:bg-inherit  font-noraml duration-700 hover:text-white active:bg-[#ff0000]'>Submit</button>
           </div>
-         <hr />
+          <hr />
         </div>
 
       </section>
