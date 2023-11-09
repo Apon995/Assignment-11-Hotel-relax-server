@@ -126,7 +126,7 @@ function Banner() {
 
     return (
         <>
-            <div id='banner' className='BannerBackground'>
+            <div id='banner' className={`BannerBackground ${location.pathname == '/Login' || location.pathname == '/Register' ? 'hidden' : 'block'}`}>
                 <div className={`flex text-start items-center flex-col justify-center w-fit h-full text-[#FFFF] px-[5%]`}>
                     <span className={`${location.pathname == '/' ? 'block' : 'hidden'} text-start w-full text-base font-normal uppercase`}>Live The exprience</span>
                     <span className={`${location.pathname == '/Room' ? 'block' : 'hidden'} text-start w-full text-base font-normal uppercase`}>

@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import useAuth from '../Customhooks/useAuth';
+
 
 function Navbar() {
   const [Navbar, setNavbar] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, Logout } = useAuth();
+
+
 
   useEffect(() => {
     if (location.pathname) {
@@ -30,7 +36,16 @@ function Navbar() {
     }
   }, [location.pathname, handleChangeNav])
 
+  // useEffect(() => {
+  //   if (location.pathname == '/Login' || location.pathname == '/Register') {
+  //     setNavbar(true);
+  //   }
+  // }, [location.pathname == '/Login' || location.pathname == '/Register'])
 
+
+  const HandleLogOut = () => {
+    Logout()
+  }
 
 
   return (
@@ -49,7 +64,7 @@ function Navbar() {
           </div>
 
           <div>
-            <ul id="navlink" className={`flex relative items-center gap-4 text-${Navbar ? '[#000000]' : '[#FFFF]'} font-medium text-[17px] hover-effect`}>
+            <ul id="navlink" className={`text-${location.pathname == '/Login' || location.pathname == '/Register' ? 'black' : ''} flex relative items-center gap-4 text-${Navbar ? '[#000000]' : '[#FFFF]'} font-medium text-[17px] hover-effect }`}>
               <li>
                 <NavLink to="/">Home</NavLink>
               </li>
@@ -78,12 +93,16 @@ function Navbar() {
         </div>
 
         <div>
-          <button className={`bg-[#000000] text-[#FFFF] py-4 px-10 font-normal text-[18px] hover:bg-inherit active:bg-[#ff0000] active:text-[#FFFF] active:border-none hover:border-[2px] border-[#000000] hover:text-${!Navbar ? 'white' : 'black'} hover:font-medium transition-all`}>
-            Login
-          </button>
-          {/* <button className={`bg-[#000000] text-[#FFFF] py-4 px-10 font-normal text-[18px] hover:bg-inherit active:bg-[#ff0000] active:text-[#FFFF] active:border-none hover:border-[2px] border-[#000000] hover:text-${Navbar ? '[#000000]' : '[#FFFF]'} hover:font-medium transition-all`}>
-            Logout
-          </button> */}
+
+          {
+            user ? <button onClick={HandleLogOut} className={`bg-[#000000] text-[#FFFF] py-4 px-10 font-normal text-[18px]  active:bg-[#ff0000] active:text-[#FFFF] active:border-none hover:border-[2px] border-[#000000] hover:text-${Navbar ? '[#000000]' : '[#FFFF]'} hover:font-medium transition-all }`}>
+              Logout
+            </button> : <button onClick={() => navigate('/Login')} className={`bg-[#000000] text-[#FFFF] py-4 px-10 font-normal text-[18px]active:bg-[#ff0000] active:text-[#FFFF] active:border-none hover:border-[2px] border-[#000000] hover:text-${!Navbar ? 'white' : 'black'} hover:font-medium transition-all `}>
+              Login
+            </button>
+          }
+
+
 
         </div>
 

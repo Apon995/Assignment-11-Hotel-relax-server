@@ -11,6 +11,7 @@ import Contact from './Components/Contact.jsx';
 import Login from './Components/Login.jsx';
 import Register from './Components/Register.jsx';
 import Detailspage from './Components/Detailspage.jsx';
+import Provider from './Customhooks/Provider.jsx';
 
 
 
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
       {
         path: '/Details/:name',
         element: <Detailspage />,
-        
+
       }
     ]
   }
@@ -60,6 +61,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 )

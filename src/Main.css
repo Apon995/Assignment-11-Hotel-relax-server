@@ -103,3 +103,254 @@ body {
 .signature {
   background-image: url(https://i.ibb.co/JrHXVTw/signature-1.jpg);
 }
+
+
+/* ---login-page-css-desgin= */
+
+.Login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  background: #fff;
+  padding: 10px 30px;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.wrapper h2 {
+  position: relative;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  margin : 10px 0px;
+}
+.wrapper h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 20px !important;
+  border-radius: 12px;
+  background: black;
+}
+.wrapper form {
+  margin-top: 30px;
+}
+.wrapper form .input-box {
+  height: 52px;
+  margin: 18px 0;
+  position: relative;
+}
+
+.password-box > i {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+form .input-box input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0 15px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  border: 2px solid #c7bebe;
+  border-radius: 6px;
+  transition: all 0.8s;
+}
+.input-box input:focus {
+  border-color: #ff3811;
+}
+form .policy {
+  display: flex;
+  align-items: center;
+}
+
+.text > h3 {
+  color: #333;
+  text-align: center;
+  color: #707070;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0px;
+}
+.text > h3 > a {
+  color: #4070f4;
+  text-decoration: none;
+}
+form .text h3 a:hover {
+  text-decoration: underline;
+}
+
+.btn-create {
+  width: 100%;
+  padding: 15px 0px;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: black;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-create:active {
+  background-color: inherit;
+  color: #333;
+}
+
+.or-span {
+  text-align: center;
+  color: #707070;
+  font-size: 16px;
+}
+
+.social-icons {
+  margin: auto;
+  width: fit-content;
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons > button {
+  font-size: 28px;
+  border:2px solid #707070;
+  padding: 10px;
+  background: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: black;
+}
+.social-icons > button > .fa-google {
+    color:#0F9D58;
+   
+}
+.social-icons > button > .fa-facebook {
+    color: #1877f2;
+}
+.social-icons > button > .fa-linkedin {
+  color: #0072b1;
+}
+
+.social-icons > button:hover{
+    border-color: #4070f4;
+}
+.social-icons > button:active{
+    border-color: white;
+}
+
+/* --register-page-css */
+
+
+.Register-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  background: #fff;
+  padding: 10px 30px;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.wrapper h2 {
+  position: relative;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  margin: 10px 0px;
+}
+.wrapper h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 28px;
+  border-radius: 12px;
+  background: black;
+}
+.wrapper form {
+  margin-top: 30px;
+}
+.wrapper form .input-box {
+  height: 52px;
+  margin: 18px 0;
+  position: relative;
+}
+
+.password-box > i {
+  position: absolute;
+  top: 20px;
+  right :20px ;
+  cursor: pointer;
+}
+form .input-box input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0 15px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  border: 2px solid #c7bebe;
+  border-radius: 6px;
+  transition: all 0.8s;
+}
+.input-box input:focus {
+  border-color: black;
+}
+form .policy {
+  display: flex;
+  align-items: center;
+}
+form h3 {
+  color: #707070;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0px;
+}
+
+form .text h3 {
+  color: #333;
+  text-align: center;
+}
+form .text h3 a {
+  color: #4070f4;
+  text-decoration: none;
+}
+form .text h3 a:hover {
+  text-decoration: underline;
+}
+
+
+.btn-create{
+    width: 100%;
+    padding: 15px 0px;
+    border-radius: 5px;
+    border:1px solid black;;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: black;
+    color:#FFF;
+    cursor: pointer;
+}
+
+.btn-create:active{
+    background-color: inherit;
+    color:#333;
+}

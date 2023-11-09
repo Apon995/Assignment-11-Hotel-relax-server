@@ -6,13 +6,17 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules'
 import 'swiper/css';
 import 'swiper/css/pagination';
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import { Calendar } from "react-modern-calendar-datepicker";
 
 function Detailspage() {
   const { name } = useParams();
   const [data, setData] = useState();
   const axiosFetch = useFetch();
+  const [currentDate, setCurrentDate] = useState();
+  const [selectedDay, setSelectedDay] = useState(null);
 
-  const { Room_details, Room_images } = data || {};
+  const { Room_details, Room_images, Room_price_per_night } = data || {};
 
 
 
@@ -23,7 +27,30 @@ function Detailspage() {
   }, [])
 
 
-  console.log(data);
+
+
+
+
+
+
+  useEffect(() => {
+    let a = new Date();
+    let date = a.getDate();
+    let month = a.getMonth();
+    let year = a.getFullYear();
+
+    const obj = {
+      "day": date,
+      "month": month,
+      "year": year
+    }
+
+    setCurrentDate(obj)
+  }, [])
+
+
+  
+
 
 
   return (
@@ -100,14 +127,95 @@ function Detailspage() {
       <br />
       <br />
 
+      <div className='px-[5%]'>
+        <h1 className='text-7xl text-[#333333] font-bold uppercase'>AVAILABILITY</h1>
+      </div>
+      <br />
+      <br />
+      <div className='flex gap-2 px-[5%]'>
+        <div className='w-[60%] flex bg-white shadow-md gap-3'>
+          <div className='border-2 border-[#adadad]'>
+            <Calendar
+              value={selectedDay}
+              onChange={setSelectedDay}
+              calendarClassName="responsive-calendar"
+              shouldHighlightWeekends
+            />
+          </div>
 
+          <div className='flex-1 px-4'>
+            <h1 className=' text-[#333333] text-2xl font-medium'>Make a Reservation</h1>
+
+            <div className='w-full'>
+              <h1 className='text-black font-normal text-xl py-4'>Your booking date </h1>
+              <p className='text-black font-normal text-xl border-b-2 border-black pb-2'>{selectedDay ? `${selectedDay?.day} / ${selectedDay?.month} / ${selectedDay?.year}` : `${currentDate?.day} / ${currentDate?.month} / ${currentDate?.year}`}</p>
+            </div>
+
+            <div>
+              <h1 className='text-black font-normal text-xl py-4'>Person availability </h1>
+              <div className='flex gap-4'>
+                <div>
+                  <p className='py-1 text-base font-normal uppercase'>Adults</p>
+                  <select name="Adults" id="Adults" className='border-2 border-black outline-none px-4 text-base font-medium py-2 w-[120px]'>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+
+                  </select>
+                </div>
+                <div>
+                  <p className='py-1 text-base font-normal uppercase'>Childrens</p>
+                  <select name="children" id="children" className='border-2 border-black outline-none px-4 text-base font-medium py-2 w-[120px]'>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+
+                  </select>
+                </div>
+              </div>
+            </div>
+            <br />
+            <br />
+
+            <div>
+              <button className='bg-black text-white font-medium text-base py-3 px-4 rounded-sm'>Book now ${data ? Room_price_per_night : ''}</button>
+            </div>
+
+          </div>
+
+
+
+
+
+        </div>
+        <div className='w-[40%]'>
+          <img src={data?.Room_images[3]} alt="" className='border-[10px] border-[#adadad] max-h-[370px] w-full' />
+        </div>
+      </div>
+
+      <br />
+      <br />
+
+
+      {/* --imager-slider- */}
       <div>
         <Swiper
           slidesPerView={2}
           spaceBetween={35}
+
           pagination={{
             clickable: false,
-            type: 'none'
+            type: 'none',
+
           }}
 
           modules={[Pagination]}
@@ -116,7 +224,7 @@ function Detailspage() {
 
 
           {
-            Room_images?.map(element => <SwiperSlide >
+            Room_images?.map(element => <SwiperSlide key={element} >
               <img src={element} alt="" className="w-full h-[470px] rounded-sm" />
 
             </SwiperSlide>)
@@ -129,20 +237,6 @@ function Detailspage() {
 
         </Swiper>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       <br />
       <br />
     </>
