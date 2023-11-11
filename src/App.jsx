@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from './Components/Navbar.jsx';
 import Footer from './Components/Footer.jsx';
 import { Outlet, useNavigation } from 'react-router-dom';
@@ -8,6 +8,8 @@ import { Oval } from 'react-loader-spinner'
 
 function App() {
   const navigation = useNavigation();
+
+ 
 
 
 

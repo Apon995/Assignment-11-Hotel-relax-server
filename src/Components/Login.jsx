@@ -35,8 +35,7 @@ function Login() {
       .then(result => {
         console.log(result);
         e.target.reset();
-        navigate('/')
-
+        navigate( location?.state ? location?.state : '/')
       })
       .catch(error => {
         if ("auth/invalid-login-credentials") {
@@ -60,11 +59,13 @@ function Login() {
     GoogleLogin()
       .then(res => {
         console.log("Log in with :", res?.providerId)
-        navigate('/')
+        navigate( location?.state ? location?.state : '/')
       })
       .catch(error => console.log(error))
 
   }
+
+  console.log(location?.state)
 
   return (
     <div className='Login-page'>
@@ -78,7 +79,7 @@ function Login() {
             <input type="email" name='email' placeholder="Enter your email" required />
           </div>
           <div className="input-box password-box">
-            <input type={showPass ? 'text' : 'password'} name='password' placeholder="Enter password" required />
+            <input type={showPass ? 'text' : 'password'} name='password' autoComplete='false' placeholder="Enter password" required />
             <i className={`fa-solid  ${showPass ? 'fa-eye' : 'fa-eye-slash'}`} onClick={() => setshowPass(!showPass)}></i>
           </div>
 

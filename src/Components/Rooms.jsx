@@ -17,6 +17,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import useFetch from '../Customhooks/useFetch';
 import contactimg from '../assets/Slider-images/grand-region.jpg';
+import { useNavigate } from 'react-router-dom';
 
 
 function Rooms() {
@@ -26,13 +27,15 @@ function Rooms() {
   const [Signature, setSignature] = useState([]);
   const [Luxury , setLuxury] = useState([]);
 
+  const navigate = useNavigate();
+
 
 
 
   useEffect(() => {
     axiosFetch.get("/AllData/Superior Room")
       .then(res => setSuperior(res?.data))
-      .catch(error => console.log(error));
+      .catch(error => console.log(error?.message));
 
   }, [])
 
@@ -40,21 +43,21 @@ function Rooms() {
   useEffect(() => {
     axiosFetch.get("/AllData/Deluxe Room")
       .then(res => setDeluxe(res?.data))
-      .catch(error => console.log(error));
+      .catch(error => console.log(error?.message));
 
   }, [])
 
   useEffect(() => {
     axiosFetch.get("/AllData/Signature Room")
       .then(res => setSignature(res?.data))
-      .catch(error => console.log(error));
+      .catch(error => console.log(error?.message));
 
   }, [])
 
   useEffect(() => {
     axiosFetch.get("/AllData/Luxury Suites Room")
       .then(res => setLuxury(res?.data))
-      .catch(error => console.log(error));
+      .catch(error => console.log(error?.message));
 
   }, [])
 
@@ -133,13 +136,13 @@ function Rooms() {
 
             <br />
             <p className="text-[18px] font-normal leading-[35px] text-[#000000] w-[500px]">
-              {superior.Room_details || ''}
+              {superior?.Room_details || ''}
             </p>
 
             <br />
             <br />
             <div>
-              <button className='px-6 py-4 bg-black text-white text-xl font-medium hover:bg-inherit border-2 border-black hover:text-black active:bg-red-700 active:text-white'>Book now ${superior?.Room_price_per_night || ''} </button>
+              <button onClick={()=> navigate(`/Details/${superior?.Room_category}`)} className='px-6 py-4 bg-black text-white text-xl font-medium hover:bg-inherit border-2 border-black hover:text-black active:bg-red-700 active:text-white'>Book now ${superior?.Room_price_per_night || ''} </button>
             </div>
           </div>
 
@@ -159,7 +162,7 @@ function Rooms() {
 
 
               {
-                superior?.Room_images?.map(element => <SwiperSlide >
+                superior?.Room_images?.map(element => <SwiperSlide key={element} >
 
                   <img src={element || ''} alt="" className='h-[470px] rounded-sm' />
 
@@ -235,7 +238,7 @@ function Rooms() {
             <br />
             <br />
             <div>
-              <button className='px-6 py-4 bg-black text-white text-xl font-medium hover:bg-inherit border-2 border-black hover:text-black active:bg-red-700 active:text-white'>Book now ${Deluxe?.Room_price_per_night || ''} </button>
+              <button onClick={()=> navigate(`/Details/${Deluxe?.Room_category}`)} className='px-6 py-4 bg-black text-white text-xl font-medium hover:bg-inherit border-2 border-black hover:text-black active:bg-red-700 active:text-white'>Book now ${Deluxe?.Room_price_per_night || ''} </button>
             </div>
           </div>
 
@@ -255,7 +258,7 @@ function Rooms() {
 
 
               {
-                Deluxe?.Room_images?.map(element => <SwiperSlide >
+                Deluxe?.Room_images?.map(element => <SwiperSlide key={element} >
 
                   <img src={element || ''} alt="" className='h-[470px] rounded-sm' />
 
@@ -329,7 +332,7 @@ function Rooms() {
             <br />
             <br />
             <div>
-              <button className='px-6 py-4 bg-black text-white text-xl font-medium hover:bg-inherit border-2 border-black hover:text-black active:bg-red-700 active:text-white'>Book now ${Signature?.Room_price_per_night || ''} </button>
+              <button onClick={()=> navigate(`/Details/${Signature?.Room_category}`)} className='px-6 py-4 bg-black text-white text-xl font-medium hover:bg-inherit border-2 border-black hover:text-black active:bg-red-700 active:text-white'>Book now ${Signature?.Room_price_per_night || ''} </button>
             </div>
           </div>
 
@@ -349,7 +352,7 @@ function Rooms() {
 
 
               {
-                Signature?.Room_images?.map(element => <SwiperSlide >
+                Signature?.Room_images?.map(element => <SwiperSlide key={element} >
 
                   <img src={element || ''} alt="" className='h-[470px] rounded-sm' />
 
@@ -422,7 +425,7 @@ function Rooms() {
             <br />
             <br />
             <div>
-              <button className='px-6 py-4 bg-black text-white text-xl font-medium hover:bg-inherit border-2 border-black hover:text-black active:bg-red-700 active:text-white'>Book now ${Luxury?.Room_price_per_night || ''} </button>
+              <button onClick={()=> navigate(`/Details/${Luxury?.Room_category}`)} className='px-6 py-4 bg-black text-white text-xl font-medium hover:bg-inherit border-2 border-black hover:text-black active:bg-red-700 active:text-white'>Book now ${Luxury?.Room_price_per_night || ''} </button>
             </div>
           </div>
 
@@ -442,7 +445,7 @@ function Rooms() {
 
 
               {
-               Luxury?.Room_images?.map(element => <SwiperSlide >
+               Luxury?.Room_images?.map(element => <SwiperSlide key={element} >
 
                   <img src={element || ''} alt="" className='h-[470px] rounded-sm' />
 

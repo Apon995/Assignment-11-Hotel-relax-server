@@ -8,22 +8,30 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
+import useAuth from "../Customhooks/useAuth.jsx";
+import Swal from 'sweetalert2'
+
+
+
+
 
 function Detailspage() {
+  const { user } = useAuth();
   const { name } = useParams();
   const [data, setData] = useState();
   const axiosFetch = useFetch();
   const [currentDate, setCurrentDate] = useState();
   const [selectedDay, setSelectedDay] = useState(null);
+  const [Bookfor, setBookfor] = useState();
 
-  const { Room_details, Room_images, Room_price_per_night } = data || {};
+  const { Room_category, Room_size, Room_details, Room_images, Room_price_per_night, Room_availability } = data || {};
 
 
 
   useEffect(() => {
     axiosFetch.get(`/AllData/${name}`)
       .then((res) => setData(res?.data))
-      .catch(error => console.log(error));
+      .catch(error => console.log(error?.message));
   }, [])
 
 
@@ -34,9 +42,10 @@ function Detailspage() {
 
 
   useEffect(() => {
+
     let a = new Date();
     let date = a.getDate();
-    let month = a.getMonth();
+    let month = a.getMonth() + 1;
     let year = a.getFullYear();
 
     const obj = {
@@ -49,7 +58,43 @@ function Detailspage() {
   }, [])
 
 
-  
+  const handleBookNow = (e) => {
+    e.preventDefault();
+
+
+
+    const bookobj = {
+      "Book_user": user?.email,
+      "Room_category": Room_category,
+      "Room_size": Room_size,
+      "Room_image": data ? Room_images[0] : '',
+      "booking_date": document.getElementById("date").value,
+      "Adults": document.getElementById('Adults').value,
+      "childrens": document.getElementById('childrens').value,
+      "Room_price_per_night": Room_price_per_night,
+      "Book_for": Bookfor,
+      "Total_price": Room_price_per_night * Bookfor,
+
+
+    }
+
+
+    axiosFetch.post('/Bookdata', bookobj)
+      .then(res => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: 'Booking done',
+            text: 'successfully Added your cart !',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1000,
+
+          })
+
+        }
+      })
+      .catch(error => console.log(error));
+  }
 
 
 
@@ -134,7 +179,7 @@ function Detailspage() {
       <br />
       <div className='flex gap-2 px-[5%]'>
         <div className='w-[60%] flex bg-white shadow-md gap-3'>
-          <div className='border-2 border-[#adadad]'>
+          <div >
             <Calendar
               value={selectedDay}
               onChange={setSelectedDay}
@@ -143,12 +188,12 @@ function Detailspage() {
             />
           </div>
 
-          <div className='flex-1 px-4'>
+          <form onSubmit={handleBookNow} className='flex-1 px-4'>
             <h1 className=' text-[#333333] text-2xl font-medium'>Make a Reservation</h1>
-
+            <p>{Room_availability} Rooms Available</p>
             <div className='w-full'>
               <h1 className='text-black font-normal text-xl py-4'>Your booking date </h1>
-              <p className='text-black font-normal text-xl border-b-2 border-black pb-2'>{selectedDay ? `${selectedDay?.day} / ${selectedDay?.month} / ${selectedDay?.year}` : `${currentDate?.day} / ${currentDate?.month} / ${currentDate?.year}`}</p>
+              <input type="text" id='date' name='bookdate' readOnly className='text-xl font-normal text-black border-b-2 border-black py-2 outline-none' value={selectedDay ? `${selectedDay?.day} / ${selectedDay?.month} / ${selectedDay?.year}` : `${currentDate?.day} / ${currentDate?.month} / ${currentDate?.year}`} />
             </div>
 
             <div>
@@ -156,7 +201,8 @@ function Detailspage() {
               <div className='flex gap-4'>
                 <div>
                   <p className='py-1 text-base font-normal uppercase'>Adults</p>
-                  <select name="Adults" id="Adults" className='border-2 border-black outline-none px-4 text-base font-medium py-2 w-[120px]'>
+                  <select name="Adults" defaultValue={1} required id="Adults" className='border-2 border-black outline-none px-4 text-base font-medium py-2 w-[120px]'>
+                    <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -172,7 +218,8 @@ function Detailspage() {
                 </div>
                 <div>
                   <p className='py-1 text-base font-normal uppercase'>Childrens</p>
-                  <select name="children" id="children" className='border-2 border-black outline-none px-4 text-base font-medium py-2 w-[120px]'>
+                  <select required defaultValue={1} id="childrens" className='border-2 border-black outline-none px-4 text-base font-medium py-2 w-[120px]'>
+                    <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -181,16 +228,21 @@ function Detailspage() {
 
                   </select>
                 </div>
+                <div>
+                  <p className='py-1 text-base font-normal uppercase'>Book for days ? </p>
+                  <input type="number" onChange={(e) => setBookfor(e.target.value)} required placeholder='Days' className='border-2 border-black outline-none px-4 text-base font-medium py-[6px] w-[125px]' />
+                </div>
               </div>
             </div>
-            <br />
-            <br />
 
-            <div>
-              <button className='bg-black text-white font-medium text-base py-3 px-4 rounded-sm'>Book now ${data ? Room_price_per_night : ''}</button>
+
+            <br />
+            <br />
+            <div className='my-2'>
+              <button className='bg-black active:bg-red-600 hover:opacity-90 text-white font-medium text-base py-3 px-4 rounded-sm'>Book now ${data ? Room_price_per_night : ''}</button>
             </div>
 
-          </div>
+          </form>
 
 
 

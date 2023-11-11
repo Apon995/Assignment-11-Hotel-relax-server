@@ -22,7 +22,7 @@ function Home() {
 
     axiosFetch.get('/AllData')
       .then(res => setAlldata(res?.data))
-      .catch(error => console.log(error))
+      .catch(error => console.log(error?.message))
 
   }, [])
 

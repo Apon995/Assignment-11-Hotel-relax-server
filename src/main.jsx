@@ -12,6 +12,7 @@ import Login from './Components/Login.jsx';
 import Register from './Components/Register.jsx';
 import Detailspage from './Components/Detailspage.jsx';
 import Provider from './Customhooks/Provider.jsx';
+import Private from './Components/private.jsx';
 
 
 
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/Mybooking',
-        element: <Mybookings />
+        element: <Private><Mybookings /></Private>
       },
       {
         path: '/About',
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/Details/:name',
-        element: <Detailspage />,
+        element:<Private><Detailspage/></Private>,
 
       }
     ]
