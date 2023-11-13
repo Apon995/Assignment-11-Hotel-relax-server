@@ -23,7 +23,7 @@ function App() {
         <Banner />
         <Navbar />
       </header>
-      <main className='min-h-screen'>
+      <main className='min-h-screen '>
         {
           navigation?.state == 'idle' ? < Outlet /> : <div className='flex items-center justify-center w-full h-[60vh]'>
             <Oval

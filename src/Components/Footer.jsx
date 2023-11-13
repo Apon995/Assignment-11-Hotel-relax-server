@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Footer() {
   return (
     <>
-      <div className='w-full px-[5%] bg-[#000000] text-[#FFF] py-9 footer md:text-start text-center ' >
+      <div className='w-full xl:px-[5%] px-[1%] bg-[#000000] text-[#FFF] py-9 footer md:text-start text-center ' >
 
         <div className=' flex md:flex-row flex-col items-center justify-between py-9'>
           {/* --footer-1st-col-- */}
@@ -17,8 +17,8 @@ function Footer() {
 
 
             <div>
-              <p className='text-base  font-normal leading-[20px]'>Our Hotel is best service provider in the city , <br />
-                one of the best hotel very larger and beautiful <br />
+              <p className='text-base  font-normal md:leading-[20px] leading-normal md:w-[260px]'>Our Hotel is best service provider in the city ,
+                one of the best hotel very larger and beautiful 
                 rooms and every service here and buget friendly.</p>
             </div>
 
@@ -38,7 +38,7 @@ function Footer() {
             </div>
           </div>
           {/* --footer-2nd-col-- */}
-          <div className='md:block hidden'>
+          <div className='lg:block hidden'>
             <h1 className='pb-4 font-semibold text-2xl'>Quick Links</h1>
             <div>
               <ul className='text-base font-medium space-y-2' id='quickLinks'>
@@ -86,7 +86,7 @@ function Footer() {
           <p className='text-base font-normal'>Copyright &copy; 2023 Hotel Relax Hotel & Resturant</p>
 
           <div>
-            <button className='bg-[#Ffff] text-[#000000] py-4 px-10 text-xl'><i className="fa-solid fa-arrow-up"></i></button>
+            <button onClick={()=> window.scrollTo(0,0)} className='bg-[#Ffff] text-[#000000] md:py-4 py-1 md:px-10 px-2 text-xl'><i className="fa-solid fa-arrow-up"></i></button>
           </div>
 
         </div>

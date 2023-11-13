@@ -15,6 +15,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules'
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
 import useFetch from '../Customhooks/useFetch';
 import contactimg from '../assets/Slider-images/grand-region.jpg';
 import { useNavigate } from 'react-router-dom';
@@ -67,15 +69,15 @@ function Rooms() {
     <>
       <br />
       <br />
-      <div className="flex w-full items-center px-[8%]">
-        <div className="w-[50%] p-9 bg-[#FFFF]">
-          <h1 className="text-[#333333] text-6xl font-bold">
+      <div className="flex md:flex-row flex-col w-full items-center lg:px-[8%] md:px-[4%] px-[2%]">
+        <div className="md:w-[50%] lg:p-9 bg-[#FFFF] ">
+          <h1 className="text-[#333333] lg:text-6xl text-3xl font-bold ">
             OUR ROOMS <br />
             AND SUITES
           </h1>
 
           <br />
-          <p className="text-[18px] font-normal leading-[35px] text-[#000000] w-[400px]">
+          <p className="lg:text-[18px] text-base  font-normal lg:leading-[35px] text-[#000000] lg:w-[400px]">
             On the present site of our hotel feet in the water, there used to be an establishment composed of a restaurant and dormitories
           </p>
 
@@ -83,39 +85,39 @@ function Rooms() {
 
         </div>
 
-        <div className="w-[50%] p-10 ">
+        <div className="md:w-[50%] lg:p-10 py-10 lg:py-0 ">
 
           <div >
-            <div className='flex items-center justify-center gap-16 text-center'>
+            <div className='flex items-center justify-center lg:gap-16 gap-12 text-center'>
               <div>
-                <img src={cityview} alt="" className='w-[80px] mx-auto' />
-                <h1 className='text-black font-normal text-xl py-2'>City view</h1>
+                <img src={cityview} alt="" className='lg:w-[80px] w-[50px] mx-auto' />
+                <h1 className='text-black font-normal lg:text-xl text-sm py-2'>City view</h1>
 
               </div>
               <div>
-                <img src={fitness} alt="" className='w-[80px] mx-auto' />
-                <h1 className='text-black font-normal text-xl py-2'>Fitness clud </h1>
+                <img src={fitness} alt="" className='lg:w-[80px] w-[50px] mx-auto' />
+                <h1 className='text-black font-normal lg:text-xl text-sm py-2'>Fitness clud </h1>
 
               </div>
               <div>
-                <img src={garden} alt="" className='w-[80px] mx-auto' />
-                <h1 className='text-black font-normal text-xl py-2'>Garden visit</h1>
+                <img src={garden} alt="" className='lg:w-[80px] w-[50px] mx-auto' />
+                <h1 className='text-black font-normal lg:text-xl text-sm py-2'>Garden visit</h1>
 
               </div>
             </div>
             <br />
-            <div className='flex items-center justify-center gap-16 text-center'>
+            <div className='flex items-center justify-center lg:gap-16 gap-12 text-center'>
               <div>
-                <img src={jacuzi} alt="" className='w-[80px] mx-auto' />
-                <h1 className='text-black font-normal text-xl py-2'>Jacuzzi</h1>
+                <img src={jacuzi} alt="" className='lg:w-[80px] w-[50px] mx-auto' />
+                <h1 className='text-black font-normal lg:text-xl text-sm py-2'>Jacuzzi</h1>
               </div>
               <div>
-                <img src={spa} alt="" className='w-[80px] mx-auto' />
-                <h1 className='text-black font-normal text-xl py-2'>Spa treatment</h1>
+                <img src={spa} alt="" className='lg:w-[80px] w-[50px] mx-auto' />
+                <h1 className='text-black font-normal lg:text-xl text-sm py-2'>Spa treatment</h1>
               </div>
               <div>
-                <img src={swimming} alt="" className='w-[80px] mx-auto' />
-                <h1 className='text-black font-normal text-xl py-2'>swimming pool</h1>
+                <img src={swimming} alt="" className='lg:w-[80px] w-[50px] mx-auto' />
+                <h1 className='text-black font-normal lg:text-xl text-sm py-2'>swimming pool</h1>
               </div>
             </div>
           </div>
@@ -125,38 +127,39 @@ function Rooms() {
 
       <br />
       {/* --superior-rooms-section */}
-      <div className='bg-[#F0F0F0] py-32'>
-        <div className="flex w-full items-center ">
-          <div className="w-[40%] pl-9 ">
-            <h1 className="text-[#333333] text-6xl font-bold uppercase w-[200px]">
+      <div className='bg-[#F0F0F0] lg:py-32 py-20'>
+        <div className="flex lg:flex-row flex-col w-full items-center ">
+          <div className="lg:w-[40%] lg:pl-9 ">
+            <h1 className="text-[#333333] lg:text-6xl text-4xl font-bold uppercase lg:w-[200px]">
               {
                 superior?.Room_category
               }
             </h1>
 
             <br />
-            <p className="text-[18px] font-normal leading-[35px] text-[#000000] w-[500px]">
+            <p className="lg:text-[18px] text-base font-normal lg:leading-[35px] leading-normal text-[#000000] xl:w-[500px] ">
               {superior?.Room_details || ''}
             </p>
 
             <br />
             <br />
             <div>
-              <button onClick={()=> navigate(`/Details/${superior?.Room_category}`)} className='px-6 py-4 bg-black text-white text-xl font-medium hover:bg-inherit border-2 border-black hover:text-black active:bg-red-700 active:text-white'>Book now ${superior?.Room_price_per_night || ''} </button>
+              <button onClick={()=> navigate(`/Details/${superior?.Room_category}`)} className='lg:px-6 px-3 lg:py-4 py-2 bg-black text-white lg:text-xl text-base font-medium hover:bg-inherit border-2 border-black hover:text-black active:bg-red-700 active:text-white'>Book now ${superior?.Room_price_per_night || ''} </button>
             </div>
           </div>
-
-          <div className="w-[60%] ">
+          <br className='lg:hidden block' />
+          <div className="lg:w-[60%] ">
             <Swiper
-              slidesPerView={2}
+              slidesPerView='auto'
               spaceBetween={30}
+              navigation ={true}
               pagination={{
                 clickable: false,
                 type: 'none',
                 slidesPerView: true
               }}
 
-              modules={[Pagination]}
+              modules={[Pagination , Navigation]}
               className="mySwiper"
             >
 
@@ -164,7 +167,7 @@ function Rooms() {
               {
                 superior?.Room_images?.map(element => <SwiperSlide key={element} >
 
-                  <img src={element || ''} alt="" className='h-[470px] rounded-sm' />
+                  <img src={element || ''} alt="" className='h-[470px] mx-auto  rounded-sm' />
 
                 </SwiperSlide>)
               }
@@ -175,41 +178,41 @@ function Rooms() {
 
         </div>
 
-        <br />
-        <br />
-        <br />
+        <br  />
+        <br  />
+        <br  />
 
-        <div className='flex items-center justify-between px-[4%] text-center'>
+        <div className='flex flex-wrap items-center justify-between  gap-6  lg:gap-0 lg:px-[4%] text-center'>
           <div>
-            <img src={city} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>City view</h1>
-
-          </div>
-          <div>
-            <img src={bed} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>Twin bed</h1>
+            <img src={city} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>City view</h1>
 
           </div>
           <div>
-            <img src={shower} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>Modren shower</h1>
+            <img src={bed} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>Twin bed</h1>
+
+          </div>
+          <div >
+            <img src={shower} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>Modren shower</h1>
 
           </div>
           <div>
-            <img src={size} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>{superior?.Room_size || ''}</h1>
+            <img src={size} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>{superior?.Room_size || ''}</h1>
           </div>
           <div>
-            <img src={tv} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>42" LED</h1>
+            <img src={tv} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>42" LED</h1>
           </div>
           <div>
-            <img src={wifi} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>24/7 wifi system</h1>
+            <img src={wifi} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>24/7 wifi system</h1>
           </div>
-          <div>
-            <i className="fa-solid fa-house-user text-[69px]"></i>
-            <h1 className='text-black font-normal text-xl py-2'>{superior?.Room_availability} Room Available</h1>
+          <div className='xl:block hidden'>
+            <i className="fa-solid fa-house-user lg:text-[69px] text-[40px] "></i>
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>{superior?.Room_availability} Room Available</h1>
           </div>
 
 
@@ -221,38 +224,39 @@ function Rooms() {
       <br />
       <br />
       {/* --Duluxe-room-section */}
-      <div className=' py-32'>
-        <div className="flex flex-row-reverse w-full items-center ">
-          <div className="w-[40%] pl-9 ">
-            <h1 className="text-[#333333] text-6xl font-bold uppercase w-[200px]">
+      <div className='lg:py-32 py-10 '>
+        <div className="flex lg:flex-row-reverse flex-col w-full items-center ">
+          <div className="lg:w-[40%] lg:pl-9 ">
+            <h1 className="text-[#333333] lg:text-6xl text-4xl font-bold uppercase lg:w-[200px]">
               {
                 Deluxe?.Room_category
               }
             </h1>
 
             <br />
-            <p className="text-[18px] font-normal leading-[35px] text-[#000000] w-[500px]">
+            <p className="lg:text-[18px] text-base font-normal lg:leading-[35px] leading-normal text-[#000000] xl:w-[500px]">
               {Deluxe?.Room_details || ''}
             </p>
 
             <br />
             <br />
             <div>
-              <button onClick={()=> navigate(`/Details/${Deluxe?.Room_category}`)} className='px-6 py-4 bg-black text-white text-xl font-medium hover:bg-inherit border-2 border-black hover:text-black active:bg-red-700 active:text-white'>Book now ${Deluxe?.Room_price_per_night || ''} </button>
+              <button onClick={()=> navigate(`/Details/${Deluxe?.Room_category}`)} className='lg:px-6 px-3 lg:py-4 py-2 bg-black text-white lg:text-xl text-base font-medium hover:bg-inherit border-2 border-black hover:text-black active:bg-red-700 active:text-white'>Book now ${Deluxe?.Room_price_per_night || ''} </button>
             </div>
           </div>
-
-          <div className="w-[60%] ">
+           <br className='lg:hidden block'/>
+          <div className="lg:w-[60%] ">
             <Swiper
-              slidesPerView={2}
+              slidesPerView='auto'
               spaceBetween={30}
+              navigation = {true}
               pagination={{
                 clickable: false,
                 type: 'none',
                 slidesPerView: true
               }}
 
-              modules={[Pagination]}
+              modules={[Pagination , Navigation]}
               className="mySwiper"
             >
 
@@ -260,7 +264,7 @@ function Rooms() {
               {
                 Deluxe?.Room_images?.map(element => <SwiperSlide key={element} >
 
-                  <img src={element || ''} alt="" className='h-[470px] rounded-sm' />
+                  <img src={element || ''} alt="" className='h-[470px] mx-auto rounded-sm' />
 
                 </SwiperSlide>)
               }
@@ -273,37 +277,37 @@ function Rooms() {
         <br />
         <br />
 
-        <div className='flex items-center justify-between px-[4%] text-center'>
+        <div className='flex flex-wrap items-center justify-between  gap-6  lg:gap-0 lg:px-[4%] text-center'>
           <div>
-            <img src={city} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>City view</h1>
+            <img src={city} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>City view</h1>
 
           </div>
           <div>
-            <img src={bed} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>Twin bed</h1>
+            <img src={bed} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>Twin bed</h1>
+
+          </div>
+          <div >
+            <img src={shower} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>Modren shower</h1>
 
           </div>
           <div>
-            <img src={shower} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>Modren shower</h1>
-
+            <img src={size} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>{Deluxe?.Room_size || ''}</h1>
           </div>
           <div>
-            <img src={size} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>{Deluxe?.Room_size || ''}</h1>
+            <img src={tv} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>42" LED</h1>
           </div>
           <div>
-            <img src={tv} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>42" LED</h1>
+            <img src={wifi} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>24/7 wifi system</h1>
           </div>
-          <div>
-            <img src={wifi} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>24/7 wifi system</h1>
-          </div>
-          <div>
-            <i className="fa-solid fa-house-user text-[69px]"></i>
-            <h1 className='text-black font-normal text-xl py-2'>{Deluxe?.Room_availability} Room Available</h1>
+          <div className='xl:block hidden'>
+            <i className="fa-solid fa-house-user lg:text-[69px] text-[40px] "></i>
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>{Deluxe?.Room_availability} Room Available</h1>
           </div>
 
 
@@ -315,38 +319,41 @@ function Rooms() {
       <br />
 
       {/* --signature-room-section */}
-      <div className=' bg-[#F0F0F0] py-32'>
-        <div className="flex w-full items-center ">
-          <div className="w-[40%] pl-9 ">
-            <h1 className="text-[#333333] text-6xl font-bold uppercase w-[200px]">
+      <div className=' bg-[#F0F0F0] lg:py-32 py-10'>
+        <div className="flex lg:flex-row flex-col w-full items-center ">
+          <div className="lg:w-[40%] lg:pl-9 ">
+            <h1 className="text-[#333333] lg:text-6xl text-4xl font-bold uppercase lg:w-[200px]">
               {
                 Signature?.Room_category
               }
             </h1>
 
             <br />
-            <p className="text-[18px] font-normal leading-[35px] text-[#000000] w-[500px]">
+            <p className="lg:text-[18px] text-base font-normal lg:leading-[35px] leading-normal text-[#000000] xl:w-[500px]">
               {Signature?.Room_details || ''}
             </p>
 
             <br />
             <br />
             <div>
-              <button onClick={()=> navigate(`/Details/${Signature?.Room_category}`)} className='px-6 py-4 bg-black text-white text-xl font-medium hover:bg-inherit border-2 border-black hover:text-black active:bg-red-700 active:text-white'>Book now ${Signature?.Room_price_per_night || ''} </button>
+              <button onClick={()=> navigate(`/Details/${Signature?.Room_category}`)} className='lg:px-6 px-3 lg:py-4 py-2 bg-black text-white lg:text-xl text-base font-medium hover:bg-inherit border-2 border-black hover:text-black active:bg-red-700 active:text-white'>Book now ${Signature?.Room_price_per_night || ''} </button>
             </div>
           </div>
 
-          <div className="w-[60%] ">
+          <br className='lg:hidden block'/>
+
+          <div className="lg:w-[60%] ">
             <Swiper
-              slidesPerView={2}
+              slidesPerView='auto'
               spaceBetween={30}
+              navigation = {true}
               pagination={{
                 clickable: false,
                 type: 'none',
                 slidesPerView: true
               }}
 
-              modules={[Pagination]}
+              modules={[Pagination , Navigation]}
               className="mySwiper"
             >
 
@@ -354,7 +361,7 @@ function Rooms() {
               {
                 Signature?.Room_images?.map(element => <SwiperSlide key={element} >
 
-                  <img src={element || ''} alt="" className='h-[470px] rounded-sm' />
+                  <img src={element || ''} alt="" className='h-[470px] mx-auto rounded-sm' />
 
                 </SwiperSlide>)
               }
@@ -367,58 +374,59 @@ function Rooms() {
         <br />
         <br />
 
-        <div className='flex items-center justify-between px-[4%] text-center'>
+        <div className='flex flex-wrap items-center justify-between  gap-6  lg:gap-0 lg:px-[4%] text-center'>
           <div>
-            <img src={city} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>City view</h1>
+            <img src={city} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>City view</h1>
 
           </div>
           <div>
-            <img src={bed} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>Twin bed</h1>
+            <img src={bed} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>Twin bed</h1>
+
+          </div>
+          <div >
+            <img src={shower} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>Modren shower</h1>
 
           </div>
           <div>
-            <img src={shower} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>Modren shower</h1>
-
+            <img src={size} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>{Signature?.Room_size || ''}</h1>
           </div>
           <div>
-            <img src={size} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>{Signature?.Room_size || ''}</h1>
+            <img src={tv} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>42" LED</h1>
           </div>
           <div>
-            <img src={tv} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>42" LED</h1>
+            <img src={wifi} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>24/7 wifi system</h1>
           </div>
-          <div>
-            <img src={wifi} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>24/7 wifi system</h1>
-          </div>
-          <div>
-            <i className="fa-solid fa-house-user text-[69px]"></i>
-            <h1 className='text-black font-normal text-xl py-2'>{Signature?.Room_availability} Room Available</h1>
+          <div className='xl:block hidden'>
+            <i className="fa-solid fa-house-user lg:text-[69px] text-[40px] "></i>
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>{Signature?.Room_availability} Room Available</h1>
           </div>
 
 
         </div>
 
 
+
       </div>
       <br />
       <br />
       {/* ---luxury-room-section */}
-      <div className=' py-32'>
-        <div className="flex flex-row-reverse w-full items-center ">
-          <div className="w-[40%] pl-9 ">
-            <h1 className="text-[#333333] text-6xl font-bold uppercase w-[200px]">
+      <div className=' lg:py-32 py-10'>
+        <div className="flex lg:flex-row flex-col w-full items-center ">
+          <div className="lg:w-[40%] lg:pl-9 ">
+            <h1 className="text-[#333333] lg:text-6xl text-4xl font-bold uppercase lg:w-[200px]">
               {
                 Luxury?.Room_category
               }
             </h1>
 
             <br />
-            <p className="text-[18px] font-normal leading-[35px] text-[#000000] w-[500px]">
+            <p className="lg:text-[18px] text-base font-normal lg:leading-[35px] leading-normal text-[#000000] xl:w-[500px]">
               {Luxury?.Room_details || ''}
             </p>
 
@@ -428,18 +436,19 @@ function Rooms() {
               <button onClick={()=> navigate(`/Details/${Luxury?.Room_category}`)} className='px-6 py-4 bg-black text-white text-xl font-medium hover:bg-inherit border-2 border-black hover:text-black active:bg-red-700 active:text-white'>Book now ${Luxury?.Room_price_per_night || ''} </button>
             </div>
           </div>
-
-          <div className="w-[60%] ">
+           <br className='lg:hidden block'/>
+          <div className="lg:w-[60%] ">
             <Swiper
-              slidesPerView={2}
+              slidesPerView='auto'
               spaceBetween={30}
+              navigation = {true}
               pagination={{
                 clickable: false,
                 type: 'none',
                 slidesPerView: true
               }}
 
-              modules={[Pagination]}
+              modules={[Pagination , Navigation]}
               className="mySwiper"
             >
 
@@ -447,7 +456,7 @@ function Rooms() {
               {
                Luxury?.Room_images?.map(element => <SwiperSlide key={element} >
 
-                  <img src={element || ''} alt="" className='h-[470px] rounded-sm' />
+                  <img src={element || ''} alt="" className='h-[470px] mx-auto rounded-sm' />
 
                 </SwiperSlide>)
               }
@@ -460,37 +469,37 @@ function Rooms() {
         <br />
         <br />
 
-        <div className='flex items-center justify-between px-[4%] text-center'>
+        <div className='flex flex-wrap items-center justify-between  gap-6  lg:gap-0 lg:px-[4%] text-center'>
           <div>
-            <img src={city} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>City view</h1>
+            <img src={city} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>City view</h1>
 
           </div>
           <div>
-            <img src={bed} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>Twin bed</h1>
+            <img src={bed} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>Twin bed</h1>
+
+          </div>
+          <div >
+            <img src={shower} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>Modren shower</h1>
 
           </div>
           <div>
-            <img src={shower} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>Modren shower</h1>
-
+            <img src={size} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>{Luxury?.Room_size || ''}</h1>
           </div>
           <div>
-            <img src={size} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>{Luxury?.Room_size || ''}</h1>
+            <img src={tv} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>42" LED</h1>
           </div>
           <div>
-            <img src={tv} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>42" LED</h1>
+            <img src={wifi} alt="" className='lg:w-[80px] w-[30px] mx-auto' />
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>24/7 wifi system</h1>
           </div>
-          <div>
-            <img src={wifi} alt="" className='w-[80px] mx-auto' />
-            <h1 className='text-black font-normal text-xl py-2'>24/7 wifi system</h1>
-          </div>
-          <div>
-            <i className="fa-solid fa-house-user text-[69px]"></i>
-            <h1 className='text-black font-normal text-xl py-2'>{Luxury?.Room_availability} Room Available</h1>
+          <div className='xl:block hidden'>
+            <i className="fa-solid fa-house-user lg:text-[69px] text-[40px] "></i>
+            <h1 className='text-black font-normal lg:text-xl text-xs py-2'>{Luxury?.Room_availability} Room Available</h1>
           </div>
 
 
@@ -503,14 +512,14 @@ function Rooms() {
       <br />
       <br />
       <br />
-      <div className='flex gap-8'>
-        <div className='w-[40%]  '>
+      <div className='lg:flex gap-8 hidden'>
+        <div className='xl:w-[40%] w-[60%]  '>
           <img src={contactimg} alt="" className='border-[16px] border-[#F0F0F0] rounded-md h-[100%]' />
         </div>
 
-        <div className='w-[50%]'>
+        <div className='xl:w-[50%] w-[40%]'>
 
-          <h1 className='text-black font-bold text-5xl '>DO YOU HAVE <br />
+          <h1 className='text-black font-bold xl:text-5xl lg:text-4xl '>DO YOU HAVE <br />
             ANY QUESTIONS?</h1>
           <br />
           <br />

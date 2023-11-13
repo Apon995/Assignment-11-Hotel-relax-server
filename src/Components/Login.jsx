@@ -35,7 +35,7 @@ function Login() {
       .then(result => {
         console.log(result);
         e.target.reset();
-        navigate( location?.state ? location?.state : '/')
+        navigate(location?.state ? location?.state : '/')
       })
       .catch(error => {
         if ("auth/invalid-login-credentials") {
@@ -59,48 +59,56 @@ function Login() {
     GoogleLogin()
       .then(res => {
         console.log("Log in with :", res?.providerId)
-        navigate( location?.state ? location?.state : '/')
+        navigate(location?.state ? location?.state : '/')
       })
       .catch(error => console.log(error))
 
   }
 
-  console.log(location?.state)
+
 
   return (
-    <div className='Login-page'>
 
-      <div className="wrapper">
-        <h2>Login</h2>
-        {Error && <span style={{ color: 'red', fontSize: '14px', fontWeight: '500', }}>{Error}</span>}
-        <br />
-        <form onSubmit={HandleLogin}>
-          <div className="input-box">
-            <input type="email" name='email' placeholder="Enter your email" required />
-          </div>
-          <div className="input-box password-box">
-            <input type={showPass ? 'text' : 'password'} name='password' autoComplete='false' placeholder="Enter password" required />
-            <i className={`fa-solid  ${showPass ? 'fa-eye' : 'fa-eye-slash'}`} onClick={() => setshowPass(!showPass)}></i>
-          </div>
-
+    <>
+      <br />
+      <br />
+      <div className='Login-page min-h-screen my-24 md:my-0'>
+        <div className="wrapper">
+          <h2>Login</h2>
+          {Error && <span style={{ color: 'red', fontSize: '14px', fontWeight: '500', }}>{Error}</span>}
           <br />
-          <button className='btn-create'>Login Now</button>
-        </form>
-        <br />
-        <p className='or-span'>----------OR---------</p>
-        <br />
-        <div className='social-icons'>
-          <button onClick={HandleGoogleLogin}><i className="fa-brands fa-google"></i></button>
-          <button><i className="fa-brands fa-facebook"></i></button>
-          <button><i className="fa-brands fa-linkedin"></i></button>
-        </div>
-        <br />
+          <form onSubmit={HandleLogin}>
+            <div className="input-box">
+              <input type="email" name='email' placeholder="Enter your email" required />
+            </div>
+            <div className="input-box password-box">
+              <input type={showPass ? 'text' : 'password'} name='password' autoComplete='false' placeholder="Enter password" required />
+              <i className={`fa-solid  ${showPass ? 'fa-eye' : 'fa-eye-slash'}`} onClick={() => setshowPass(!showPass)}></i>
+            </div>
 
-        <div className="text">
-          <h3>You don't have an account? <Link to='/Register'>Register now</Link></h3>
+            <br />
+            <button className='btn-create'>Login Now</button>
+          </form>
+          <br />
+          <p className='or-span'>----------OR---------</p>
+          <br />
+          <div className='social-icons'>
+            <button onClick={HandleGoogleLogin}><i className="fa-brands fa-google"></i></button>
+            <button><i className="fa-brands fa-facebook"></i></button>
+            <button><i className="fa-brands fa-linkedin"></i></button>
+          </div>
+          <br />
+
+          <div className="text">
+            <h3>You don't have an account? <Link to='/Register'>Register now</Link></h3>
+          </div>
         </div>
       </div>
-    </div>
+
+
+
+
+    </>
   )
 }
 

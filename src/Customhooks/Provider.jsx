@@ -2,12 +2,15 @@
 import React, { createContext, useEffect, useState } from 'react';
 import auth from '../../firebase.config';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import useFetch from './useFetch';
 
 
 export const authContaxt = createContext(null)
 
 
 function Provider({ children }) {
+
+    const axiosFetch = useFetch();
 
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true);
@@ -30,19 +33,36 @@ function Provider({ children }) {
     }
 
     const Logout = () => {
-        setLoading(true)
-        return signOut(auth)
+        setLoading(true);
+        signOut(auth)
+            .then(() => {
+                axiosFetch.post('/jwtTokenClear', {}, { withCredentials: true })
+                    .then((res) => { console.log(res?.data) })
+                    .catch(error => { console.log(error) })
+
+            })
+            .catch(error => console.log(error));
+
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            const loggeduser = { email: currentUser?.email || user?.email };
+            setUser(currentUser);
+            setLoading(false)
+
             if (currentUser) {
-                setUser(currentUser)
-                setLoading(false)
+
+                axiosFetch.post('/jwtToken', loggeduser, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                    .catch(error => console.log(error))
+
+
             }
             else {
-                setUser(null)
-                setLoading(false)
+                setUser(null);
             }
         })
 

@@ -10,12 +10,16 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules'
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Link } from "react-router-dom";
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
+import { Link, useNavigate } from "react-router-dom";
 
 function Home() {
 
-  const [Alldata, setAlldata] = useState([]);
+  const navigate = useNavigate();
 
+  const [Alldata, setAlldata] = useState([]);
+  
   const axiosFetch = useFetch();
 
   useEffect(() => {
@@ -30,15 +34,15 @@ function Home() {
     <>
       <section>
         {/* --our-hotel-history-section- */}
-        <div className="flex w-full items-center">
-          <div className="w-[50%] p-9 bg-[#FFFF]">
-            <h1 className="text-[#333333] text-6xl font-bold">
+        <div className={`flex w-full items-center md:flex-row flex-col`}>
+          <div className="md:w-[50%] lg:p-9 md:p-2  bg-[#FFFF]">
+            <h1 className="text-[#333333] lg:text-6xl text-4xl font-bold">
               Our <br />
               <span>History</span>
             </h1>
 
             <br />
-            <p className="text-[18px] font-normal leading-[35px] text-[#000000]">
+            <p className="lg:text-[18px] text-base font-normal leading-normal md:leading-[35px] text-[#000000]">
               Hotel Relax Now has a storied past that traces its roots back to a
               picturesque village in the heart of Europe, where time seemed to
               slow down, and relaxation was a way of life. In the late 19th
@@ -53,7 +57,7 @@ function Home() {
             </p>
 
             <br />
-            <p className="text-[18px] font-normal leading-[35px] text-[#000000]">
+            <p className="lg:text-[18px] text-base font-normal leading-normal md:leading-[35px] text-[#000000] md:hidden lg:block block">
               The hotel quickly gained a reputation as a sanctuary of serenity.
               Celebrities, artists, and intellectuals from all corners of the
               world flocked to this remote paradise to find respite and
@@ -64,8 +68,8 @@ function Home() {
             </p>
           </div>
 
-          <div className="w-[50%] bg-[#F0F0F0] p-10 ">
-            <div className="border-[10px] border-[#FFFF] w-[90%]">
+          <div className="md:w-[50%] bg-[#F0F0F0] lg:p-10 p-5 ">
+            <div className="lg:border-[10px] border-5 border-[#FFFF] lg:w-[90%]">
               <img src={History} alt="Our history image" />
             </div>
           </div>
@@ -75,17 +79,17 @@ function Home() {
 
 
         {/*---------- the grand-regions-section--------- */}
-        <div className="bg-[#000000] w-full flex pb-28 gap-4 items-center ">
-          <div className="w-[50%]">
-            <h1 className="text-6xl font-bold text-white py-[80px] ml-9">
+        <div className="bg-[#000000] w-full flex pb-28 gap-4 items-center justify-center md:flex-row flex-col ">
+          <div className="md:w-[50%]">
+            <h1 className="md:text-6xl text-4xl font-bold text-white md:py-[80px] py-5 md:ml-9">
               THE GRAND <br />
               REGIONS
             </h1>
             <img src={grand} alt="" className="" />
           </div>
 
-          <div className="w-[50%] px-5">
-            <p className="text-white text-[18px] font-normal leading-[30px]">
+          <div className="md:w-[50%] md:px-5 md:mt-12">
+            <p className="text-white md:text-[18px] text-base font-normal leading-normal md:leading-[30px]">
               Experience the warm embrace of Hotel Relax Now from the moment you
               step through our doors. Our dedicated staff is committed to
               providing you with a grand welcome and ensuring your stay begins
@@ -99,7 +103,7 @@ function Home() {
             </p>
 
             <br />
-            <p className="text-white  text-[18px] font-normal leading-[30px]">
+            <p className="text-white md:text-[18px] text-base font-normal md:leading-[30px] leading-normal  md:hidden lg:block block ">
               Savor the flavors of world-class cuisine at Hotel Relax Now. Our
               culinary team crafts grand dishes that tantalize your taste buds
               and leave you with a memorable dining experience.Our world-class
@@ -120,43 +124,44 @@ function Home() {
         {/* ---------Feature-rooms-section------------------ */}
 
         <div className="bg-[#F0F0F0]">
-          <div className="w-full flex justify-between px-[5%] py-10">
-            <h1 className="text-6xl font-bold text-[#333333]">
+          <div className="w-full flex justify-between md:px-[5%] px-[3%] items-center py-10">
+            <h1 className="md:text-6xl text-3xl font-bold text-[#333333]">
               Featured <br />
               Rooms
             </h1>
-            <button className="border-2 h-fit border-black py-4 px-8 text-base active:bg-[#ff0000]  hover:bg-black hover:text-white text-black  transition-all font-medium">
+            <button onClick={() => navigate('/Room')} className="border-2 h-fit border-black py-2 px-2 md:py-4 md:px-8 text-base active:bg-[#ff0000]  hover:bg-black hover:text-white text-black  transition-all font-medium">
               View All Rooms
             </button>
           </div>
           <br />
-          <div className="px-[1%] pb-40">
+          <div className="md:px-[1%] pb-40">
             <Swiper
-              slidesPerView={2}
+              slidesPerView='auto'
               spaceBetween={35}
+              navigation = {true}
               pagination={{
                 clickable: false,
                 type: 'none'
               }}
 
-              modules={[Pagination]}
+              modules={[Pagination , Navigation]}
               className="mySwiper"
             >
               {
                 Alldata?.map(room =>
                   <SwiperSlide key={room._id}>
                     <Link to={`/Details/${room?.Room_category}`}>
-                      <div>
-                        <img src={room?.Room_images[0]} alt="" className="w-full h-[470px] rounded-sm" />
+                      <div className="lg:w-[60%] md:w-[90%] mx-auto">
+                        <img src={room?.Room_images[0]} alt="" className="w-full md:h-[470px] rounded-sm" />
 
                         <div className="flex justify-between mt-4">
                           <div>
-                            <h1 className="text-black text-4xl font-bold">{room?.Room_category}</h1>
-                            <p className="text-[#54595F] text-xl font-normal">{room?.Room_size}</p>
+                            <h1 className="text-black md:text-4xl text-xl font-bold">{room?.Room_category}</h1>
+                            <p className="text-[#54595F] md:text-xl text-base  font-normal">{room?.Room_size}</p>
                           </div>
                           <div>
-                            <h1 className="text-[#54595F] text-xl text-end">From </h1>
-                            <p className="text-black text-4xl font-bold">${room?.Room_price_per_night}</p>
+                            <h1 className="text-[#54595F] md:text-xl text-base text-end">From </h1>
+                            <p className="text-black md:text-4xl text-xl font-bold">${room?.Room_price_per_night}</p>
                           </div>
                         </div>
                       </div>
@@ -181,7 +186,7 @@ function Home() {
         <div>
           <h1 className='text-base font-medium text-red-500 text-center'>User Testimonials</h1>
           <div className='text-center space-y-2'>
-            <h2 className='text-5xl font-semibold text-[#333333]'>What Our Client Say</h2>
+            <h2 className='md:text-5xl text-3xl font-semibold text-[#333333]'>What Our Client Say</h2>
 
 
 
@@ -255,59 +260,59 @@ function Home() {
 
 
         {/* ---google-map/locaiton-section */}
-        <div className="flex gap-2 w-full  mt-32">
-          <div className="w-[40%] text-center flex items-center justify-center ">
+        <div className="flex gap-2 lg:flex-row flex-col w-full mt-32">
+          <div className="lg:w-[40%] text-center flex items-center justify-center ">
 
             <div className="py-8 flex gap-3 flex-col">
-              <h1 className="uppercase text-6xl text-black font-bold">Hotel Relax</h1>
+              <h1 className="uppercase md:text-6xl text-4xl text-black font-bold">Hotel Relax</h1>
               <br />
               <div className="flex items-center gap-3">
                 <i className="fa-regular fa-calendar-days text-2xl"></i>
 
                 <div>
-                  <h1 className="text-xl text-black font-medium">Saturday to friday
+                  <h1 className="md:text-xl text-base text-black font-medium">Saturday to friday
                   </h1>
-                  <p className="text-start text-base text-[#333333] font-normal"> 24/7 open</p>
+                  <p className="text-start md:text-base text-sm text-[#333333] font-normal"> 24/7 open</p>
                 </div>
 
               </div>
 
 
               <div className="flex items-center gap-3">
-                <i className="fa-solid fa-location-dot text-2xl"></i>
+                <i className="fa-solid fa-location-dot md:text-2xl text-xl"></i>
 
                 <div>
-                  <h1 className="text-xl text-black font-medium">Auckland city in new zealand
+                  <h1 className="md:text-xl text-base text-black font-medium">Auckland city in new zealand
                   </h1>
-                  <p className="text-start text-base text-[#333333] font-normal ">Hotel locaiton</p>
+                  <p className="text-start md:text-base text-sm text-[#333333] font-normal ">Hotel locaiton</p>
                 </div>
 
               </div>
 
               <div className="flex items-center gap-3">
-                <i className="fa-solid fa-phone text-2xl"></i>
+                <i className="fa-solid fa-phone md:text-2xl text-xl"></i>
 
                 <div>
-                  <h1 className="text-xl text-black font-medium">+9990003</h1>
-                  <h2 className="text-start text-base text-[#333333] font-normal">phone</h2>
+                  <h1 className="md:text-xl text-base text-black font-medium">+9990003</h1>
+                  <h2 className="text-start md:text-base text-sm text-[#333333] font-normal">phone</h2>
 
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <i className="fa-solid fa-envelope text-2xl"></i>
+                <i className="fa-solid fa-envelope md:text-2xl text-xl"></i>
 
                 <div>
-                  <h1 className="text-xl text-black font-medium">Hotel_realx2023@gmail.com
+                  <h1 className="md:text-xl text-base text-black font-medium">Hotel_realx2023@gmail.com
                   </h1>
-                  <p className="text-start text-base text-[#333333] font-normal">email</p>
+                  <p className="text-start md:text-base text-sm text-[#333333] font-normal">email</p>
                 </div>
 
               </div>
             </div>
 
           </div>
-          <div className="w-[60%]  bg-[#F0F0F0] p-9">
-            <div className="border-[10px] border-[#FFFF]">
+          <div className="lg:w-[60%]  bg-[#F0F0F0] lg:p-9">
+            <div className="md:border-[10px] border-[#FFFF]">
               <iframe width="100%" height="500" src="https://maps.google.com/maps?width=100%25&amp;height=500&amp;hl=en&amp;q=Auckland+(Hotel%20relax)&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/population/">Population mapping</a></iframe>
             </div>
           </div>

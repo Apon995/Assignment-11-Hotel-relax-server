@@ -85,7 +85,7 @@ function Register() {
       <br />
       
 
-      <div className='Register-page'>
+      <div className='Register-page min-h-screen my-24 md:my-0'>
 
         <div className="wrapper">
           <h2>Registration</h2>
