@@ -14,7 +14,7 @@ function Mybookings() {
   useEffect(() => {
 
     axiosFetch.get(`/Bookdata?email=${user?.email}`)
-      .then(res => setData(res.data))
+      .then(res => setData(res?.data))
       .catch(error => console.log(error.message));
 
   }, [])
@@ -26,61 +26,103 @@ function Mybookings() {
     setTotalcost(total)
   })
 
-  const handleDelete = (id, date) => {
+  const handleDelete = (id, dateobj) => {
+
+    Swal.fire({
+      title: "your sure Delete Book item ?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        const date = `${dateobj?.Date}/${dateobj?.Month}/${dateobj?.Year}`
+        const format = ['DD/MM/YYYY', 'RFC2822', 'ISO'];
+        const currentDate = moment();
+        const a = moment(date.replace(/\s+/g, ''), format, true);
+        const twoDaysAgo = a.clone().subtract(2, 'days')
+
+        if (currentDate.isBefore(twoDaysAgo)) {
 
 
+          axiosFetch.delete(`/Bookdata?ID=${id}`)
+            .then(res => {
+              if (res.data.deletedCount == 1) {
+                Swal.fire({
+                  title: 'Deleted Done !',
+                  text: 'successfully deleted booked room!',
+                  icon: 'success',
+                  showConfirmButton: false,
+                  timer: 1000,
 
-    const format = ['DD/MM/YYYY', 'RFC2822', 'ISO'];
-    const currentDate = moment();
-    const a = moment(date.replace(/\s+/g, ''), format, true);
-    const twoDaysAgo = a.clone().subtract(2, 'days')
+                })
 
-    if (currentDate.isBefore(twoDaysAgo)) {
+                const remaining = data.filter((room) => room._id !== id)
 
-
-      axiosFetch.delete(`/Bookdata?ID=${id}`)
-        .then(res => {
-          if (res.data.deletedCount == 1) {
-            Swal.fire({
-              title: 'Deleted Done !',
-              text: 'successfully deleted booked room!',
-              icon: 'success',
-              showConfirmButton: false,
-              timer: 1000,
+                setData(remaining)
+              }
 
             })
-
-            const remaining = data.filter((room) => room._id !== id)
-
-            setData(remaining)
-          }
-
-        })
-        .catch(error => console.log(error.message))
+            .catch(error => console.log(error.message))
 
 
-    } else {
-      Swal.fire({
-        title: "can't delete this book !",
-        text: 'booking date before two days it can delete ! More details for our help line : +233343',
-        icon: 'warning',
-        showConfirmButton: true,
-       
+        } else {
+          Swal.fire({
+            title: "can't delete this book !",
+            text: 'booking date before two days it can delete ! More details for our help line : +233343',
+            icon: 'warning',
+            showConfirmButton: true,
 
-      })
 
-    }
+          })
 
-    
+        }
+
+      }
+    })
 
 
 
 
+  }
+
+
+  const handleClearCart = () => {
+    Swal.fire({
+      title: "your sure Delete cart Items ?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete all!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+
+        axiosFetch.delete("/BookdataClear")
+          .then(res => {
+            if (res?.data?.deletedCount <= 1) {
+              const remaining = data.filter(data => data !== data)
+
+              setData(remaining)
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+              });
+
+            }
+          })
+          .catch(error => console.log(error))
 
 
 
 
-    ;
+
+      }
+    });
 
   }
 
@@ -95,7 +137,7 @@ function Mybookings() {
             <div className="lg:w-3/4 w-full bg-white lg:px-10 lg:py-10 md:px-4 md:py-4 py-8">
               <div className="flex justify-between border-b pb-8">
                 <h1 className="font-semibold text-2xl">My Bookings</h1>
-                <h2 className="font-semibold md:text-2xl text-xl"> {data.length} rooms</h2>
+                <button disabled={data.length == 0} onClick={handleClearCart} className='bg-black text-white text-sm font-medium rounded-md px-3 py-2 disabled:opacity-75'>Clear cart</button>
               </div>
               <div className="flex mt-10 mb-5">
                 <h3 className="font-medium text-black text-sm uppercase md:w-2/5 w-[33%]">
@@ -156,7 +198,7 @@ function Mybookings() {
                     ${room.Room_price_per_night}
                   </span>
                   <span className="text-center w-1/5 font-semibold text-sm md:block hidden">
-                    ${room.Total_price}
+                    ${parseInt(room?.Total_price)}
                   </span>
 
                 </div>)
@@ -167,20 +209,20 @@ function Mybookings() {
 
 
             </div>
-           <div className='md:block hidden'>
-           <br />
-            <br />
-            <br />
-            <br />
-            <br />
-           </div>
+            <div className='md:block hidden'>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+            </div>
             <div id="summary" className="lg:w-1/4 md:w-[60%] w-full lg:px-10 lg:py-10 md:px-4 md:py-4 py-8 mx-auto">
               <h1 className="font-semibold text-2xl border-b pb-8">
                 Order Summary
               </h1>
               <div className="flex justify-between mt-10 mb-5">
                 <span className="font-semibold text-sm uppercase">Total Price</span>
-                <span className="font-semibold text-sm">${Totalcost}</span>
+                <span className="font-semibold text-sm">${  parseInt(Totalcost) }</span>
               </div>
               <div className="py-10">
                 <label
@@ -202,7 +244,7 @@ function Mybookings() {
               <div className="border-t mt-8">
                 <div className="flex font-semibold justify-between py-6 text-sm uppercase">
                   <span>Total cost</span>
-                  <span>${Totalcost}</span>
+                  <span>${parseInt(Totalcost)}</span>
                 </div>
                 <button className="bg-black py-3 text-base text-white uppercase w-full">
                   Checkout

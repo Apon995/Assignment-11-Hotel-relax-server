@@ -55,7 +55,7 @@ function Provider({ children }) {
 
                 axiosFetch.post('/jwtToken', loggeduser, { withCredentials: true })
                     .then(res => {
-                        console.log(res.data);
+                        console.log(res?.data);
                     })
                     .catch(error => console.log(error))
 
